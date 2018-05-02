@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
+from django.http import Http404
+from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from blogapp.serializers import PostSerializer, TagSerializer, CategorySerializer, CommentSerializer
@@ -18,6 +20,26 @@ class PostViewSet(viewsets.ViewSet):
           serializer = PostSerializer(post)
           return Response(serializer.data)
 
+      def create(self, request, format=None):
+          serializer = PostSerializer(data=request.data)
+          if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+      def put(self, request, pk, format=None):
+          post = self.get_object_or_404(pk)
+          serializer = PostSerializer(post, data=request.data)
+          if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+          return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+      def delete(self, request, pk, format=None):
+        post = self.get_object_or_404(pk)
+        post.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 class TagViewSet(viewsets.ViewSet):
       def list(self, request):
           queryset = Tag.objects.all()
@@ -35,48 +57,3 @@ class CommentViewSet(viewsets.ViewSet):
           queryset = Comment.objects.all()
           serializer = CommentSerializer(queryset, many=True)
           return Response(serializer.data)
-# class ExpiringTokenAuthentication(permissions.BasePermission):
-
-#       def has_permission(self, request, view):
-#           if request.method == 'PUT':
-#             class Signup(APIView):
-#               permission_classes = (IsAuthenticatedOrReadOnly,)
-
-  # from rest_framework import status
-  # from rest_framework.decorators import api_view
-  # from rest_framework.response import Response
-  # from blogapp.models import Post
-  # from blogapp.serializers import PostSerializer
-
-  # @api_view(['GET', 'POST'])
-  # def post_list(request, format=None):
-
-  #     if request.method == 'GET':
-  #         post = Post.objects.all()
-  #         post = PostSerializer(post, many=True)
-  #         return Response(serializer.data)
-
-  #     elif request.method == 'POST':
-  #         serializer = PostSerializer(data=request.data)
-  #         if serializer.is_valid():
-  #             serializer.save()
-  #             return Response(serializer.data, status=status.HTTP_201_CREATED)
-  #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-  # @api_view(['GET', 'PUT', 'DELETE'])
-  # def post_detail(request, title, format=None):
-  #     try:
-  #         post = Post.objects.get(title=title)
-  #     except Post.DoesNotExist:
-  #         return Response(status=status.HTTP_400_NOT_FOUND)
-
-  #     if request.method == 'GET':
-  #         serializer = PostSerializer(post, data=request.data)
-  #         if serializer.is_valid():
-  #             serializer.save()
-  #             return Response(serializer.data)
-  #         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-  #     elif request.method == 'DELETE':
-  #         post.delete()
-  #         return Response(status=status.HTTP_204_NO_CONTENT)
