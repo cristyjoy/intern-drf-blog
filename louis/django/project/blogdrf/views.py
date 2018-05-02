@@ -15,35 +15,53 @@ from .serializers import CategorySerializer, TagSerializer, PostSerializer
 class CategoryViewSet(viewsets.ViewSet):
     def list(self ,request):
         queryset = Category.objects.all()
-        serializer = CategorySerializer(queryset, many=True)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = CategorySerializer(queryset, many=True, context=serializer_context)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = Category.objects.all()
         category = get_object_or_404(queryset, pk=pk)
-        serializer = CategorySerializer(category)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = CategorySerializer(category, context=serializer_context)
         return Response(serializer.data)
 
 class TagViewSet(viewsets.ViewSet):
     def list(self ,request):
         queryset = Tag.objects.all()
-        serializer = TagSerializer(queryset, many=True)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = TagSerializer(queryset, many=True, context=serializer_context)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = Tag.objects.all()
         tag = get_object_or_404(queryset, pk=pk)
-        serializer = TagSerializer(tag)
+        serializer_context = {
+            'request': request,
+        }
+        serializer = TagSerializer(tag, context=serializer_context)
         return Response(serializer.data)
 
 class PostViewSet(viewsets.ViewSet):
     def list(self ,request):
         queryset = Post.objects.all()
-        serializer = PostSerializer(queryset, many=True, context={'request': request})
+        serializer_context = {
+            'request': request,
+        }
+        serializer = PostSerializer(queryset, many=True, context=serializer_context)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         queryset = Post.objects.all()
         post = get_object_or_404(queryset, pk=pk)
-        serializer = PostSerializer(post, context={'request': request})
+        serializer_context = {
+            'request': request,
+        }
+        serializer = PostSerializer(post, context=serializer_context)
         return Response(serializer.data)
