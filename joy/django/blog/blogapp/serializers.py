@@ -15,21 +15,21 @@ from .models import Post, Tag, Category, Comment
 #         fields = ('url', 'name')
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('title', 'sub_title', 'banner_photo', 'date_created', 'date_modified', 'category', 'status')
 
-class TagSerializer(serializers.HyperlinkedModelSerializer):
+class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
         fields = ('title', 'date_created', 'date_modified')
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ('title', 'date_created', 'date_modified')
 
-class CommentSerializer(serializers.HyperlinkedModelSerializer):
+class CommentSerializer(serializers.ModelSerializer):
     model = Comment
     fields = ('post', 'content', 'author', 'date_created')
