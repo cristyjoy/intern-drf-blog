@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+ <style type="text/css">
+#list{
+    background-color: #C8F7C5;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    margin:auto;
+    transition: 0.3s;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-bottom:20px;
+}
+</style>
+  <li id="list"></li>
+  <script src="jquery.js"></script>
+  <script type="text/javascript">
+$.ajax({
+        type:'GET',
+        dataType:'json',
+        url:'http://127.0.0.1:8000/blogs/',
+        success:function(data){
+          console.log(data)
+          var mylist=$('#list')
+          for (var i = 0; i < data.length; i ++ ){
+             console.log(data[i]);
+             var list = data[i];
+             console.log(list)
+             mylist.append(
+            '<img src="'+list.picture+'">', 
+            '<li>' + list.title + '</li>',
+            '<li>' + list.description + '</li>',
+            '<li>' + list.country + '</li>',
+            '<li>' + list.is_official + '</li>')
+        }
+       }
+      }
+     )
+    </script>
+  </body>
+</html>
