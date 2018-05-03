@@ -3,6 +3,13 @@ from rest_framework import serializers
 from .models import Blog,Post,Comment,Category,Tag
 
 
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('title',)
+
+
 class BlogSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Blog
@@ -10,9 +17,9 @@ class BlogSerializer(serializers.HyperlinkedModelSerializer):
                   'sub_heading')
 
 class PostSerializer(serializers.ModelSerializer):
-    blog = serializers.SlugRelatedField(read_only=True, slug_field='heading')
-    category = serializers.SlugRelatedField(read_only=True, slug_field='title')
- 
+    tags = TagSerializer(Tag, many=True)
+    blog_heading = serializers.SerializerMethodField()
+    category_name = serializers.SerializerMethodField()
     class Meta:
         model = Post
         fields = ('title',
@@ -21,9 +28,18 @@ class PostSerializer(serializers.ModelSerializer):
                   'body', 
                   'date_modified', 
                   'blog',
+                  'blog_heading',
                   'category',
+                  'category_name',
                   'tags', 
                   'status')
+
+    def get_category_name(self,instance):
+       return instance.category.title
+
+    def get_blog_heading(self,instance):
+       return instance.blog.heading   
+ 
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
@@ -36,10 +52,5 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = ('title',)
 
-
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ('title',)
 
  

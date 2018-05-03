@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from os import path
+from dj_database_url import parse as parse_db_url
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,6 +28,9 @@ SECRET_KEY = 'dkum$fx(!m10tdg+#+8hte^q4mp@x^k=@)lz)&wh!y*0_z+1$v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# SECURITY WARNING: don't run with debug turned on in production!
+ 
+ 
 ALLOWED_HOSTS = []
 
 
@@ -121,13 +127,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
- 
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR, 'media')
-    )
-MEDIA_URL = '/media/'
+STATIC_URL = config('STATIC_URL', default='/s/')
+STATIC_ROOT = path.join(BASE_DIR, 'statics')
 
-STATIC_URL = '/static/'
+MEDIA_URL = config('MEDIA_URL', default='/media/')
+MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
 #cors sittings
 CORS_ORIGIN_ALLOW_ALL = True
