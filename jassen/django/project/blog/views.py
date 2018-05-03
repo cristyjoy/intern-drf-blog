@@ -14,12 +14,24 @@ class BlogViewSet(viewsets.ViewSet):
 
 
 class PostViewSet(viewsets.ViewSet):
-    def list(self, request):
+    def list(self ,request):
         queryset = Post.objects.all()
-        serializer = PostSerializer(queryset, many=True)
+        serializer_context = {'request': request,}
+        serializer = PostSerializer(queryset, many=True, context=serializer_context)
         return Response(serializer.data)
 
+    def create(self, request, format=None):
+        serializer = PostSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+ 
 
+    def delete(self, request, pk, format=None):
+        snippet = self.get_object(pk)
+        snippet.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)        
 class CommentViewSet(viewsets.ViewSet):
     def list(self, request):
         queryset = Comment.objects.all()
