@@ -100,3 +100,9 @@ ENV/
 # mypy
 .mypy_cache/
 .DS_Store
+*.sqlite3
+
+louis/django/project/media/
+jay/django/project/media/
+joy/django/blog/media/
+jassen/django/project/media/
