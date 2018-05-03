@@ -12,6 +12,9 @@
     padding-left: 20px;
     padding-bottom:20px;
 }
+img{
+   width: 300px;
+}
 </style>
   <li id="list"></li>
   <script src="jquery.js"></script>
@@ -19,7 +22,7 @@
 $.ajax({
         type:'GET',
         dataType:'json',
-        url:'http://127.0.0.1:8000/blogs/',
+        url:'http://127.0.0.1:8000/post/',
         success:function(data){
           console.log(data)
           var mylist=$('#list')
@@ -28,9 +31,9 @@ $.ajax({
              var list = data[i];
              console.log(list)
              mylist.append(
-            '<img src="'+list.picture+'">', 
-            '<li>' + list.title + '</li>',
-            '<li>' + list.description + '</li>',
+            '<img src="'+list.banner_photo+'">', 
+            '<li>' + list.blog.heading + '</li>',
+            '<li>' + list.category.title + '</li>',
             '<li>' + list.country + '</li>',
             '<li>' + list.is_official + '</li>')
         }
