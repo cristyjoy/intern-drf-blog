@@ -1,0 +1,41 @@
+!DOCTYPE html>
+<html>
+ <head>
+	   <title>Post List</title>
+    </head>
+
+ <style type="text/css">
+ 
+   #list{
+    background-color: #130f40;
+    box-shadow: 0 2px 4px 0 rgba(0, 1, 2);
+    border-radius: 50px;
+    max-width: 250px;
+    margin:auto;
+ }
+ </style>
+  <li id="list"></li>
+
+  <script src="jquery.js"></script>
+
+  <script type="text/javascript">
+ $.ajax({
+        type:'GET',
+        dataType:'json',
+        url:'',
+        success:function(data){
+          console.log(data)
+          var mylist=$('#list')
+          for (var i = 0; i < data.length; i ++ ){
+            console.log(data[i]);
+           var list = data[i];
+             console.log(list)
+
+             mylist.append('<p>' +list.title + '</p><p>'+sub.Title+'</p> <img src="' +list.picture + '"><p>' + list.score + '</p><p>' +list.body + '</p><p>'+list.date_modified+'</p><p>'+list.date_created+'</p><p>'+ list.category+'</p><p>'+ list.tags+'</p><p>'+list.status+'</p>');
+        }
+       }
+      }
+     )
+    </script>
+  </body>
+</html>
