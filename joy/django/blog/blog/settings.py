@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from os import path
+
+from decouple import config
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blogapp',
     'rest_framework',
-    'corsheaders',
+    # 'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -132,19 +136,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-STATIC_URL = '/static/'
+STATIC_URL = config('STATIC_URL', default='/s/')
+STATIC_ROOT = path.join(BASE_DIR, 'static')
 
-LOGIN_REDIRECT_URL = '/posts/'
+MEDIA_URL = config('MEDIA_URL', default='/m/')
+MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
-
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'templates','static'),
-]
-
-MEDIA_ROOT = (
-    os.path.join(BASE_DIR, 'media')
-)
-
-MEDIA_URL = '/media/'
 

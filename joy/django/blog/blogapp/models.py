@@ -7,6 +7,7 @@ POST_STATUS = (
     ('published', 'Published'),
     ('draft', 'Draft'),
     ('hidden', 'Hidden'),
+    ('archived', 'Archived'),
     )
 class Post(models.Model):
     STATUS_CHOICES = (('published', 'Published'), ('draft', 'Draft'), ('hidden', 'Hidden'),)
@@ -22,8 +23,6 @@ class Post(models.Model):
 
     def __str__(self):
         return '{}'.format(self.title)
-    class Meta:
-        ordering = ['title',]
 
 class Tag(models.Model):
     title                   = models.CharField(max_length=120)
@@ -33,8 +32,6 @@ class Tag(models.Model):
     def __str__(self):
         return '{}'.format(self.title)
 
-    class Meta:
-        ordering = ['title',]
 
 class Category(models.Model):
     title                   = models.CharField(max_length=120)
