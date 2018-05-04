@@ -2,8 +2,8 @@ from rest_framework import serializers
 from .models import Post, Tag, Category, Comment
 
 class PostSerializer(serializers.ModelSerializer):
-    tag_name = serializers.SerializerMethodField()
-    category_name = serializers.SerializerMethodField()
+    # tag_name = serializers.SerializerMethodField()
+    # category_name = serializers.SerializerMethodField()
     class Meta:
         model = Post
         fields = (
@@ -12,18 +12,16 @@ class PostSerializer(serializers.ModelSerializer):
             'banner_photo',
             'body',
             'date_created',
-             'date_modified',
-              'category',
-              'category_name',
-              'tags',
-              'tag_name',
-              'status'
+            'date_modified',
+            'category',
+            'tags',
+            'status'
         )
-    def get_category_name(self, instance):
-        return instance.category.title
+    # def get_category_name(self, instance):
+    #     return instance.category.title
 
-    def get_tag_name(self, instance):
-        return instance.tags.title
+    # def get_tag_name(self, instance):
+    #     return instance.tags.title
 
 class TagSerializer(serializers.ModelSerializer):
     class Meta:

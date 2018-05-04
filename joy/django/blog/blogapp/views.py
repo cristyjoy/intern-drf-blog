@@ -47,10 +47,10 @@ class PostViewSet(viewsets.ViewSet):
             return Response(serializer.data)
           return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-      def delete(self, request, pk, format=None):
-        post = self.get_object_or_404(pk)
-        post.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+      # def delete(self, request, pk, format=None):
+      #   post = self.get_object_or_404(pk)
+      #   post.delete()
+      #   return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TagViewSet(viewsets.ViewSet):
       def list(self, request):
