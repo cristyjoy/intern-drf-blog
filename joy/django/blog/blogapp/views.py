@@ -53,15 +53,15 @@ class PostViewSet(viewsets.ViewSet):
       #   return Response(status=status.HTTP_204_NO_CONTENT)
 
 class TagViewSet(viewsets.ViewSet):
-      def list(self, request):
-          queryset = Tag.objects.all()
-          serializer_context = {
-              'request': request,
-          }
-          serializer = TagSerializer(queryset, many=True, context=serializer_context)
-          return Response(serializer.data)
+    def list(self ,request):
+        queryset = Tag.objects.all()
+        serializer_context = {
+            'request': request,
+        }
+        serializer = TagSerializer(queryset, many=True, context=serializer_context)
+        return Response(serializer.data)
 
-      def retrieve(self, request, pk=None):
+    def retrieve(self, request, pk=None):
         queryset = Tag.objects.all()
         tag = get_object_or_404(queryset, pk=pk)
         serializer_context = {
@@ -69,6 +69,13 @@ class TagViewSet(viewsets.ViewSet):
         }
         serializer = TagSerializer(tag, context=serializer_context)
         return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = TagSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response (serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class CategoryViewSet(viewsets.ViewSet):
       def list(self, request):

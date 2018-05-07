@@ -1,5 +1,7 @@
 from django.db import models
 
+from versatileimagefield.fields import VersatileImageField
+
 
 # Create your models here.
 
@@ -13,7 +15,7 @@ class Post(models.Model):
     STATUS_CHOICES = (('published', 'Published'), ('draft', 'Draft'), ('hidden', 'Hidden'),)
     title = models.CharField(max_length=200)
     sub_title = models.CharField(max_length=200)
-    banner_photo = models.ImageField()
+    banner_photo = VersatileImageField()
     body = models.TextField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now_add=True)

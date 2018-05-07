@@ -2,6 +2,8 @@ from rest_framework import serializers
 from .models import Post, Tag, Category, Comment
 
 class PostSerializer(serializers.ModelSerializer):
+    banner_photo=serializers.ImageField(
+        max_length=None, use_url=True,)
     # tag_name = serializers.SerializerMethodField()
     # category_name = serializers.SerializerMethodField()
     class Meta:
