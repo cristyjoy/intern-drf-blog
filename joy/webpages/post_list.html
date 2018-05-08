@@ -112,9 +112,9 @@
       padding: 10px;
       border-style: solid;
       max-width: 100px;
-      float: center;
+      float: left;
       margin-bottom: 10px;
-
+      margin-right: 20px;
  }
  .container h1{
       font-family: Tangerine;
@@ -128,10 +128,9 @@
       font-family: Narwhal Light, Kreon Light;
       font-size: 20px;
       font-weight: 500;
-
  }
   img{
-    width:600px;
+    width:560px;
   }
 
   #slideshow {
@@ -175,6 +174,7 @@
     width: 100%;
     padding: 20px;
 }
+
   </style>
 </head>
 <body>
@@ -189,9 +189,17 @@
        </div>
        <div>
          <img src="sea.jpg" alt="Sea">
+         <div class="content">
+            <h1>Lifestyle</h1>
+            <p>Lifestyle is the interests, opinions, behaviours, and behavioural orientations of an individual, group, or culture.</p>
+        </div>
        </div>
        <div>
          <img src="nature.jpg" alt="Nature">
+         <div class="content">
+            <h1>Travel</h1>
+            <p>Travel is the movement of people between distant geographical locations. Travel can be done by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.</p>
+        </div>
        </div>
 
     </div>
@@ -213,7 +221,7 @@
         </h1>
   </div> -->
 
-       <ul id="list"></ul>
+    <div id="list" ></div>
     <script src="jquery.js">
 
     </script>
@@ -230,7 +238,7 @@
                     var list = (data[i]);
                     console.log(list);
                     mylist.append(
-                      '<div class="container"' + '<h1>'+list.title+ '</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><p>'+list.body+'</p><p>'+list.category+'</p><p>'+list.tags+'</p><p>'+list.date_created+'</p><h2>'+list.date_modified+'</h2><p>'+list.status+'</p></div>'
+                      '<div class="container"><h1>'+list.title+ '</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><p>'+list.body+'</p><p>'+list.category+'</p><p>'+list.tags+'</p><p>'+list.date_created+'</p><h2>'+list.date_modified+'</h2><p>'+list.status+'</p></div>'
                       );
       }
     }
