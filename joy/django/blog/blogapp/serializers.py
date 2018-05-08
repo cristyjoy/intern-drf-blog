@@ -1,40 +1,66 @@
 from rest_framework import serializers
-from .models import Post, Tag, Category, Comment
+from .models import Tag, Category, Comment, Post
+from django.utils.timesince import timesince
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = (
+            'title',
+            'date_created',
+            'date_modified'
+        )
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            'title',
+            'date_created',
+            'date_modified'
+        )
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = (
+            'post',
+            'date_created',
+            'author',
+            'content'
+        )
 
 class PostSerializer(serializers.ModelSerializer):
-    banner_photo=serializers.ImageField(
-        max_length=None, use_url=True,)
-    # tag_name = serializers.SerializerMethodField()
-    # category_name = serializers.SerializerMethodField()
+#    banner_photo = serializers.FileField(required=True)
+    date_display = serializers.SerializerMethodField()
+    category_name = serializers.SerializerMethodField()
+    timesince = serializers.SerializerMethodField()
+#    tags = TagSerializer(Tag, many=True)
+
     class Meta:
         model = Post
         fields = (
             'title',
             'sub_title',
             'banner_photo',
-            'body',
+            # 'blog',
             'date_created',
+            'category_name',
             'date_modified',
-            'category',
             'tags',
-            'status'
+            'category',
+            'body',
+            'status',
+            'date_display',
+            'timesince'
         )
-    # def get_category_name(self, instance):
-    #     return instance.category.title
 
-    # def get_tag_name(self, instance):
-    #     return instance.tags.title
+    def get_category_name(self, instance):
+        return instance.category.title
 
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ('title', 'date_created', 'date_modified')
+    def get_date_display(self, instance):
+        return instance.date_created.strftime("%b d%, | at %M %p")
 
-class CategorySerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Category
-        fields = ('title', 'date_created', 'date_modified')
-
-class CommentSerializer(serializers.ModelSerializer):
-    model = Comment
-    fields = ('post', 'content', 'author', 'date_created')
+    def get_timesince(self, instance):
+        return timesince(instance.date_modified) + "ago"

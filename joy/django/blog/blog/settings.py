@@ -158,10 +158,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-STATIC_URL = config('STATIC_URL', default='/s/')
+STATIC_URL = config('STATIC_URL', default='/static/')
 STATIC_ROOT = path.join(BASE_DIR, 'static')
 
-MEDIA_URL = config('MEDIA_URL', default='/m/')
+MEDIA_URL = config('MEDIA_URL', default='/media/')
 MEDIA_ROOT = path.join(BASE_DIR, 'media')
 
 
