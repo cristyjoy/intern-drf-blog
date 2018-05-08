@@ -103,21 +103,36 @@
     text-align: center;
   }
 */
-/*  .container{
-    border-radius: 35px 10px / 20px 10px;
-    border: 1px solid crimson;
-    min-width: 350px;
-    margin-left: 400px;
-    margin-top: auto;
-    box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
-    padding: 10px;
-    border-style: solid;
-    max-width: 300px;
-    float: center;
-  }*/
-  /*img{
-    border-radius: 25px;
-  }*/
+  .container{
+      border-radius: 35px 10px / 20px 10px;
+      border: 1px solid crimson;
+      min-width: 600px;
+      margin-top: auto;
+      box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
+      padding: 10px;
+      border-style: solid;
+      max-width: 100px;
+      float: center;
+      margin-bottom: 10px;
+
+ }
+ .container h1{
+      font-family: Tangerine;
+      text-shadow: 4px 4px 4px #aaa;
+      font-size: 50px;
+      font-weight: 900;
+      margin-left: 70px;
+
+ }
+ .container p{
+      font-family: Narwhal Light, Kreon Light;
+      font-size: 20px;
+      font-weight: 500;
+
+ }
+  img{
+    width:600px;
+  }
 
   #slideshow {
       margin: 50px auto;
@@ -139,27 +154,49 @@
   #slideshow img{
     width: 100%;
   }
+
+  * {
+    box-sizing: border-box;
+}
+
+.card {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card img {vertical-align: middle;}
+
+.card .content {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+}
   </style>
 </head>
 <body>
 
-    <div id="slideshow">
+    <div id="slideshow" class="card">
        <div>
-         <img src="grass.jpg">
+         <img src="music.jpg" alt="Music">
+         <div class="content">
+            <h1>Music</h1>
+            <p>Music is an art form and cultural activity whose medium is sound organized in time. The common elements of music are pitch, rhythm, dynamics, and the sonic qualities of timbre and texture.</p>
+        </div>
        </div>
        <div>
-         <img src="bamboo.jpg">
+         <img src="sea.jpg" alt="Sea">
        </div>
        <div>
-         <img src="i.jpg">
-       </div>
-       <div>
-         <img src="g.jpg">
+         <img src="nature.jpg" alt="Nature">
        </div>
 
     </div>
 
-    <!-- <div class="lta">
+   <!--  <div class="lta">
       <div class="lta-wrapper">
         <h1 class="lta-r1"><span class="lta-source">Cristy Joy</span>Live, travel,</h1>
         <h1 class="lta-r2">adventure, bless,</h1>
@@ -193,7 +230,7 @@
                     var list = (data[i]);
                     console.log(list);
                     mylist.append(
-                      '<div class="container"' + '<h1>'+list.title+'</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><p>'+list.date_created+'</p><p>'+list.date_modified+'</p><p>'+list.tags+'</p><p>'+list.category+'</p><h2>'+list.body+'</h2><p>'+list.status+'</p></div>'
+                      '<div class="container"' + '<h1>'+list.title+ '</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><p>'+list.body+'</p><p>'+list.category+'</p><p>'+list.tags+'</p><p>'+list.date_created+'</p><h2>'+list.date_modified+'</h2><p>'+list.status+'</p></div>'
                       );
       }
     }
