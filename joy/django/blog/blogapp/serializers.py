@@ -9,7 +9,8 @@ class TagSerializer(serializers.ModelSerializer):
         fields = (
             'title',
             'date_created',
-            'date_modified'
+            'date_modified',
+            'id'
         )
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -18,7 +19,8 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = (
             'title',
             'date_created',
-            'date_modified'
+            'date_modified',
+            'id'
         )
 
 class CommentSerializer(serializers.ModelSerializer):
