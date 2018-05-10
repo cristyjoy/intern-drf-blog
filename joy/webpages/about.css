@@ -1,0 +1,29 @@
+  #siteAds {
+  grid-area: ads;
+  margin-right: 3px;
+  margin-left: 200px
+  }
+  #siteAds img{
+  border-radius: 50%;
+  width: 25%;
+  height: 50%;
+  position: absolute;
+  /*top: 150px;
+  right: 100px;*/
+  box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
+  border: 1px solid crimson;
+  border-style: solid;
+  margin-top: 100px;
+  }
+  h1{
+   position: absolute;
+   font-size: 16px;
+   /*top: 250px;
+   right:0px;
+   left:1020px;*/
+   /*word-break: break-all;*/
+   width: 500px;
+   font-family: Florence, cursive;
+   font-weight: 500;
+   margin-top: 350px;
+  }

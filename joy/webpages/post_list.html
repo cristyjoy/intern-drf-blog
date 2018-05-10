@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Tangerine">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:300' rel='stylesheet' type='text/css'>
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="container.css">
     <script src="jquery.js"></script>
-  <title>POST LISTS</title>
-<style>
- .ml1 {
+    <title>POST LISTS</title>
+
+
+  <style>
+    .ml1 {
       font-weight: 900;
       font-size: 20px;
     }
@@ -49,64 +55,10 @@
          }
     .ml1 .line2 { bottom: 0; }
 
-   /* .lta {
-    color: #fff;
-    text-align: center;
-    background-image: url(d.jpg);
-    background-size: cover;
-    background-color: #d2bd9c;
-    font-size: 1em;
-    font-family: Merriweather, serif;
-    padding: 11em 0 13em;
-  }
-
-  .lta-wrapper {
-    margin: 0 auto;
-    display: inline-block;
-    text-align: left;
-  }
-
-  .lta-r1 {
-    padding-right: 3.5em;
-    font-size: 7em;
-    font-weight: 300;
-    line-height: 1.1em;
-    position: relative;
-  }
-
-  .lta-r2 {
-    font-size: 4.8em;
-    font-weight: 300;
-    line-height: 1.2em;
-  }
-
-  .lta-r3 {
-    font-size: 4.405em;
-    font-weight: 300;
-    line-height: 1.3em;
-  }
-
-  .lta-source {
-    margin-top: -1em;
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.4em;
-    font-weight: 300;
-    font-size: 0.12em;
-    float: right;
-    width: 24em;
-    height: 24em;
-    line-height: 23.5em;
-    border: 0.3em solid #fff;
-    text-align: center;
-  }
-*/
-  .container{
+    .container{
       border-radius: 35px 10px / 20px 10px;
       border: 1px solid crimson;
-      min-width: 600px;
+      min-width: 400px;
       margin-top: auto;
       box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
       padding: 10px;
@@ -114,26 +66,28 @@
       max-width: 100px;
       float: left;
       margin-bottom: 10px;
-      margin-right: 20px;
- }
- .container h1{
-      font-family: Tangerine;
+      margin-right: 5px;
+      position: relative;
+
+    }
+    .container h1{
+      font-family: Narwhal Light, Kreon Light;
       text-shadow: 4px 4px 4px #aaa;
-      font-size: 50px;
-      font-weight: 900;
+      font-size: 30px;
+      font-weight: 500;
       margin-left: 70px;
 
- }
- .container p{
+    }
+    .container p{
       font-family: Narwhal Light, Kreon Light;
       font-size: 20px;
       font-weight: 500;
- }
-  img{
-    width:560px;
-  }
+    }
+    img{
+    width:380px;
+    }
 
-  #slideshow {
+    #slideshow {
       margin: 50px auto;
       position: relative;
       min-width: 800px;
@@ -141,39 +95,47 @@
       min-height: 800px;
       padding: 10px;
       box-shadow: 0 0 20px rgba(0,0,0,0.4);
-  }
+    }
 
-  #slideshow > div {
+    #slideshow > div {
       position: absolute;
       /*top: 10px;*/
       left: 10px;
       right: 10px;
       bottom: 10px;
-  }
-  #slideshow img{
+    }
+    #slideshow img{
     width: 100%;
-  }
+    }
 
-  * {
+    * {
     box-sizing: border-box;
-}
+    }
+    h2{
+        font-family: Narwhal Light, Kreon Light;
+        font-size: 20px;
+        font-weight: 200;
+    }
 
-.card {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-}
+    .card {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-.card img {vertical-align: middle;}
+    .card img {vertical-align: middle;}
 
-.card .content {
-    position: absolute;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
-    color: #f1f1f1;
-    width: 100%;
-    padding: 20px;
-}
+    .card .content {
+        position: absolute;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Black background with transparency */
+        color: #f1f1f1;
+        width: 100%;
+        padding: 20px;
+    }
+    #row{
+        flex-direction: row;
+    }
 
   </style>
 </head>
@@ -201,8 +163,16 @@
             <p>Travel is the movement of people between distant geographical locations. Travel can be done by foot, bicycle, automobile, train, boat, bus, airplane, or other means, with or without luggage, and can be one way or round trip.</p>
         </div>
        </div>
-
     </div>
+
+    <nav>
+      <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
 
    <!--  <div class="lta">
       <div class="lta-wrapper">
@@ -229,7 +199,7 @@
         $.ajax({
           type:'GET',
             dataType:'json',
-              url:'http://127.0.0.1:8000/api/posts/',
+              url:'http://127.0.0.1:8000/posts/',
                 success:function(data){
                   console.log(data)
                   var mylist = $('#list')
@@ -238,7 +208,7 @@
                     var list = (data[i]);
                     console.log(list);
                     mylist.append(
-                      '<div class="container"><h1>'+list.title+ '</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><p>'+list.body+'</p><p>'+list.category+'</p><p>'+list.tags+'</p><p>'+list.date_created+'</p><h2>'+list.date_modified+'</h2><p>'+list.status+'</p></div>'
+                      '<div class="container" id="row"><h1>'+list.title+ '</h1><h1>'+list.sub_title+'</h1><img src="'+list.banner_photo+'"><h2 maxlength="20">'+list.body+'</h2><p>'+list.category+'</p><p>'+list.tags+'</p><p>'+list.date_created+'</p><p>'+list.date_modified+'</p><p>'+list.status+'</p></div>'
                       );
       }
     }
@@ -294,6 +264,9 @@
                 .appendTo('#slideshow');
             },  3000);
     </script>
+     <script src="js/jquery-3.3.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>
