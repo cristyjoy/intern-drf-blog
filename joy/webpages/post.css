@@ -1,0 +1,117 @@
+   body{
+    background-color: transparent;
+  }
+
+  .container{
+    border-radius: 35px 10px / 20px 10px;
+    border: 1px solid crimson;
+    min-width: 350px;
+    margin-left: 400px;
+    margin-top: auto;
+    box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
+    padding: 10px;
+    border-style: solid;
+    max-width: 300px;
+    float: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .springy-text{
+    color: red;
+    animation-name: springy-text;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+    animation-play-state: running;
+    animation-fill-mode: backwards;
+    text-shadow: 4px 4px 4px #aaa;
+    font-size: 25px;
+    font-weight: 1200;
+    margin-left: 30px;
+
+    }
+  @keyframes springy-text {
+     0%   {
+    letter-spacing: 1.2em;
+    color: thistle;
+     }
+     100%   {
+    letter-spacing: 0.1em;
+    color: red;
+  }
+  }
+
+  }
+  /*h1{
+    font-family: Tangerine, serif;
+    font-size: 40px;
+    color: lime;
+  }*/
+  .sr-only{
+    font-size: xx-large;
+
+  }
+  .form-control{
+    border-color: black;
+    margin: 10px;
+  }
+  #submit{
+    margin-left: 120px;
+    border-color: black;
+    size: 50px;
+    margin-bottom: 10px;
+  }
+  #text{
+    font-family: Tangerine;
+    text-shadow: 4px 4px 4px #aaa;
+    font-size: 30px;
+    font-weight: 900;
+    padding:3px;
+    margin-left: 10px;
+  }
+  .ml15 {
+  font-weight: 800;
+  font-size: 3.8em;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  margin-left: 150px;
+  }
+
+  .ml15 .word {
+  display: inline-block;
+  line-height: 1em;
+  color: maroon;
+  }
+  ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0;
+  z-index: 0;
+  width: 100%;
+  left: 0;
+  }
+
+
+  li {
+      float: left;
+  }
+
+  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+  }
+
+  li a:hover {
+      background-color: #111;
+  }
+

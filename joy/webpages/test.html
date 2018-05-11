@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <link rel="stylesheet" href="test.css">
+  <title>Test</title>
+</head>
+<body>
+  <header>
+    <div id="logo" class="menuUp">
+        <h1>cristy joy.</h1>
+        <div id="navToggle"><a href="#">Menu</a></div>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li>
+                <a href="#">Blog <span class="toggle">Expand</span><span class="caret"></span></a>
+                <nav>
+                    <ul>
+                        <li><a href="#">Travel</a></li>
+                        <li><a href="#">Lifestyle</a></li>
+                        <li><a href="#">Humour</a></li>
+                        <li><a href="#">Gaming</a></li>
+                        <li><a href="#">Music</a></li>
+                    </ul>
+                </nav>
+            </li>
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Help</a></li>
+        </ul>
+    </nav>
+</header>
+  <script src="jquery.js"></script>
+<script>
+  $(document).ready(function() {
+    $("#navToggle a").click(function(e){
+        e.preventDefault();
+
+        $("header > nav").slideToggle("medium");
+        $("#logo").toggleClass("menuUp menuDown");
+    });
+
+    $(window).resize(function() {
+        if($( window ).width() >= "600") {
+            $("header > nav").css("display", "block");
+
+            if($("#logo").attr('class') == "menuDown") {
+                $("#logo").toggleClass("menuUp menuDown");
+            }
+        }
+        else {
+            $("header > nav").css("display", "none");
+        }
+    });
+
+    $("header > nav > ul > li > a").click(function(e) {
+        if($( window ).width() <= "600") {
+            if($(this).siblings().size() > 0 ) {
+                $(this).siblings().slideToggle("fast")
+                $(this).children(".toggle").html($(this).children(".toggle").html() == 'close' ? 'expand' : 'close');
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>

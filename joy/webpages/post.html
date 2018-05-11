@@ -1,166 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <link rel="stylesheet" href="post.css">
 
     <script src="jquery.js"></script>
   <title>CRISTY'S LIFESTYLE, MUSIC AND TRAVEL BLOG</title>
-  <style>
-
-    body{
-      background-color: transparent;
-  }
-
-  .container{
-      border-radius: 35px 10px / 20px 10px;
-      border: 1px solid crimson;
-      min-width: 350px;
-      margin-left: 400px;
-      margin-top: auto;
-      box-shadow:  7px 7px 20px 0px  rgba(0,0,0,0.3), 40px 40px 10px -40px  rgba(0,0,0,0.8) inset;
-      padding: 10px;
-      border-style: solid;
-      max-width: 300px;
-      float: center;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-  }
-  .springy-text{
-      color: red;
-      animation-name: springy-text;
-      animation-duration: 1s;
-      animation-timing-function: ease-in;
-      animation-delay: 0s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate-reverse;
-      animation-play-state: running;
-      animation-fill-mode: backwards;
-      text-shadow: 4px 4px 4px #aaa;
-      font-size: 25px;
-      font-weight: 1200;
-
-      }
-  @keyframes springy-text {
-       0%   {
-      letter-spacing: 1.2em;
-      color: thistle;
-       }
-       100%   {
-      letter-spacing: 0.1em;
-      color: red;
-  }
-  }
-
-  }
-  /*h1{
-      font-family: Tangerine, serif;
-      font-size: 40px;
-      color: lime;
-  }*/
-  .sr-only{
-      font-size: xx-large;
-
-  }
-  .form-control{
-      border-color: black;
-      margin: 10px;
-  }
-  #submit{
-      margin-left: 120px;
-      border-color: black;
-      size: 50px;
-      margin-bottom: 10px;
-  }
-  #text{
-      font-family: Tangerine;
-      text-shadow: 4px 4px 4px #aaa;
-      font-size: 30px;
-      font-weight: 900;
-      padding:3px;
-      margin-left: 10px;
-  }
-  .ml15 {
-    font-weight: 800;
-    font-size: 3.8em;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    margin-left: 150px;
-  }
-
-  .ml15 .word {
-    display: inline-block;
-    line-height: 1em;
-  }
-
-  </style>
 </head>
 <body>
+     <nav>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+          </ul>
+    </nav>
 
     <h1 class="ml15">
       <span class="word">Joyang's</span>
       <span class="word">Blog</span>
     </h1>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-    <script>
-        function togglePlayState(newState){
-
-       document.getElementById("springy").style.animationPlayState=newState;
-        }
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script>function togglePlayState(newState){document.getElementById("springy").style.animationPlayState=newState;}</script>
 
     <div class="container" >
      <form  method="POST" id="postform" enctype="multipart/form-data">
         <h2 class="springy-text" id="springy">Add Post</h2>
-       <!--  <button onclick="togglePlayState('Paused');">Pause Animation</button>
-        <button onclick="="togglePlayState('Running');>Continue Animation</button> -->
          <div>
              <label for="inputtitle" class="sr-only" id="text">Title:</label>
              <input type="text" name="title" class="form-control" placeholder="Title " required autofocus>
          </div>
-
          <div>
              <label for="inputsub_title" class="sr-only" id="text">Subtitle:</label>
              <input type="text" name="sub_title" class="form-control" placeholder="Sub title" required autofocus>
          </div>
-
          <div class="thumbnails" style="width:400px;">
             <label class="cabinet BrandHeader" id="text">Banner Photo:</label>
             <input type="file" class="file" name="banner_photo" id="test">
          </div>
-
          <div>
             <label for="inputbody" class="cabinet BrandHeader" id="text">Body:</label>
             <textarea name="body" class="form-control" placeholder="Text" required autofocus></textarea>
          </div>
-         <!-- <div>
-            <label for="inputblog" class="sr-only">Blog</label>
-            <input type="blog" id="inputblog" class="form-control"  required autofocus>
-         </div> -->
          <div>
             <label for="inputcategory" class="sr-only" id="text">Category:</label>
             <select name="category" id="category"></select>
          </div>
-
          <div>
             <label for="inputtags" class="sr-only" id="text">Tags:</label>
             <select name="tags" id="tags" multiple></select>
          </div>
-
          <div>
             <label for="inputstatus" class="sr-only" id="text">Status:</label>
             <select name="status">
                 <option value="published">Published</option>
                 <option value="draft">Draft</option>
-                <option value="hidden">Hidden</option>
+                <option value="archived">Archived</option>
             </select>
-
          </div>
-
          <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
      </form>
     </div>
@@ -170,7 +68,6 @@
 
     <span id="result"></span>
     <script src="form.js"></script>
-
     <script src="http://malsup.github.com/jquery.form.js"></script>
     <script type="text/javascript">
       function getCookie(name) {

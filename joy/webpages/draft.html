@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="archived.css">
+  <link rel="stylesheet" href="home.css">
+  <title>Draft Posts</title>
+</head>
+<body>
+    <nav>
+            <ul>
+              <li><a href="home.html">Home</a></li>
+            </ul>
+    </nav>
+   <article id="mainArticle"></article>
+
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+    $.ajax({
+        type:'GET',
+        dataType:'json',
+        url:'http://127.0.0.1:8000/draft/',
+        success:function(data){
+            console.log(data)
+            var mylist = $('#mainArticle')
+            for (var i = 0; i < data.length ; i++) {
+                console.log(data[i]);
+                var list = (data[i]);
+                console.log(list);
+                mylist.append(
+                    '<div>' +
+                        '<p>Title: ' + list.title + '</p>' +
+                        '<p>Subtitle: ' + list.sub_title + '</p>' +
+                        '<img src="' + list.banner_photo + '" class="img-thumbnail" alt="Title: " width="304" height="236">'+
+                            '<p>' + list.body + '</p>' +
+                        '<p>Category: ' + list.category + '</p>' +
+                        '<p>Tags: ' + list.tags + '</p>' +
+                        '<p>Status: ' + list.status + '</p>' +
+                        '<p>Created: ' + list.date_created + '</p>' +
+                        '<p>Modified: ' + list.date_modified + '</p>' +
+                    '</div>'
+                );
+            }
+        }
+    });
+    </script>
+</body>
+</html>
