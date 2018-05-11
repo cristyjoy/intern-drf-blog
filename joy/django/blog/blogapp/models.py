@@ -4,15 +4,9 @@ from versatileimagefield.fields import VersatileImageField
 
 
 # Create your models here.
-
-POST_STATUS = (
-    ('published', 'Published'),
-    ('draft', 'Draft'),
-    ('hidden', 'Hidden'),
-    ('archived', 'Archived'),
-    )
 class Post(models.Model):
     STATUS_CHOICES = (('published', 'Published'), ('draft', 'Draft'), ('hidden', 'Hidden'),)
+    POST_STATUS = (('published', 'Published'),('draft', 'Draft'),('archived', 'Archived'),)
     title = models.CharField(max_length=200)
     sub_title = models.CharField(max_length=200)
     banner_photo = VersatileImageField()

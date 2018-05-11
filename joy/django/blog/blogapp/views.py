@@ -64,6 +64,20 @@ class CategoryViewSet(viewsets.ViewSet):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+class DraftViewSet(viewsets.ViewSet):
+    def list(self, request):
+        queryset = Post.objects.filter(status='draft')
+        serializer_context = {'request': request,}
+        serializer = PostSerializer(queryset, many=True, context=serializer_context)
+        return Response(serializer.data)
+
+class ArchivedViewSet(viewsets.ViewSet):
+    def list(self, request):
+        queryset = Post.objects.filter(status='archived')
+        serializer_context = {'request': request,}
+        serializer = PostSerializer(queryset, many=True, context=serializer_context)
+        return Response(serializer.data)
+
 
 class CommentViewSet(viewsets.ViewSet):
     """
